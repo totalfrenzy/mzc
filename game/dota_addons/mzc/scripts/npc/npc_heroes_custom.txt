@@ -27,6 +27,9 @@
 		//"Ability8"					""
 		//"Ability9"					""
 		//"Ability10"					""
-
+// Vision
+        //----------------------------------------------------------------
+        "VisionDaytimeRange"        "100000"
+        "VisionNighttimeRange"      "100000"
 	}
 }

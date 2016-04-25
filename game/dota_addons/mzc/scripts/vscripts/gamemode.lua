@@ -97,8 +97,7 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	hero:SetGold(5000, false)
 	ModifyLumber(player, 5000)
 
-	--Increase vision
-	hero:MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE(5000)
+	GameMode:SetFogOfWarDisabled(true) 
 
 	-- Lumber tick
 	Timers:CreateTimer(1, function()
