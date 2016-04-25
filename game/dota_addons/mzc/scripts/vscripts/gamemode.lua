@@ -52,12 +52,12 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	player.lumber = 0 -- Secondary resource of the player
 
     -- Create city center in front of the hero
-    local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 300
-    local city_center_name = "city_center"
-	local building = BuildingHelper:PlaceBuilding(player, city_center_name, position, true, 5) 
+    --local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 300
+    --local city_center_name = "city_center"
+	--local building = BuildingHelper:PlaceBuilding(player, city_center_name, position, true, 5) 
 
 	-- Set health to test repair
-	building:SetHealth(building:GetMaxHealth()/3)
+	--building:SetHealth(building:GetMaxHealth()/3)
 
 	-- These are required for repair to know how many resources the building takes
 	building.GoldCost = 100
@@ -65,37 +65,40 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	building.BuildTime = 15
 
 	-- Add the building to the player structures list
-	player.buildings[city_center_name] = 1
-	table.insert(player.structures, building)
+	--player.buildings[city_center_name] = 1
+	--table.insert(player.structures, building)
 
-	CheckAbilityRequirements( hero, player )
-	CheckAbilityRequirements( building, player )
+	--CheckAbilityRequirements( hero, player )
+	--CheckAbilityRequirements( building, player )
 
 	-- Add the hero to the player units list
 	table.insert(player.units, hero)
 	hero.state = "idle" --Builder state
 
 	-- Spawn some peasants around the hero
-	local position = hero:GetAbsOrigin()
-	local numBuilders = 5
-	local angle = 360/numBuilders
-	for i=1,5 do
-		local rotate_pos = position + Vector(1,0,0) * 100
-		local builder_pos = RotatePosition(position, QAngle(0, angle*i, 0), rotate_pos)
-
-		local builder = CreateUnitByName("peasant", builder_pos, true, hero, hero, hero:GetTeamNumber())
-		builder:SetOwner(hero)
-		builder:SetControllableByPlayer(playerID, true)
-		table.insert(player.units, builder)
-		builder.state = "idle"
-
-		-- Go through the abilities and upgrade
-		CheckAbilityRequirements( builder, player )
-	end
+	--local position = hero:GetAbsOrigin()
+	--local numBuilders = 5
+	--local angle = 360/numBuilders
+	--for i=1,5 do
+		--local rotate_pos = position + Vector(1,0,0) * 100
+		--local builder_pos = RotatePosition(position, QAngle(0, angle*i, 0), rotate_pos)
+--
+		--local builder = CreateUnitByName("peasant", builder_pos, true, hero, hero, hero:GetTeamNumber())
+		--builder:SetOwner(hero)
+		--builder:SetControllableByPlayer(playerID, true)
+		--table.insert(player.units, builder)
+		--builder.state = "idle"
+--
+		---- Go through the abilities and upgrade
+		--CheckAbilityRequirements( builder, player )
+	--end
 
 	-- Give Initial Resources
 	hero:SetGold(5000, false)
 	ModifyLumber(player, 5000)
+
+	--Increase vision
+	hero:MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE(5000)
 
 	-- Lumber tick
 	Timers:CreateTimer(1, function()
