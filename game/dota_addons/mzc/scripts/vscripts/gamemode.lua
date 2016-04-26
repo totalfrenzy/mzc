@@ -94,16 +94,20 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	--end
 
 	-- Give Initial Resources
-	hero:SetGold(5000, false)
-	ModifyLumber(player, 5000)
+	--hero:SetGold(5000, false)
+	--ModifyLumber(player, 5000)
+
+	hero:SetGold(RandomInt(1,15), false)
+	ModifyLumber(player, RandomInt(0,5))
+
 
 	GameMode:SetFogOfWarDisabled(true) 
 
 	-- Lumber tick
-	Timers:CreateTimer(1, function()
-		ModifyLumber(player, 10)
-		return 10
-	end)
+	--Timers:CreateTimer(1, function()
+	--	ModifyLumber(player, 10)
+	--	return 10
+	--end)
 
 	-- Give a building ability
 	local item = CreateItem("item_build_wall", hero, hero)
@@ -115,6 +119,19 @@ function CustomGameMode:OnPlayerPickHero(keys)
 		if ability then ability:SetLevel(ability:GetMaxLevel()) end
 	end
 	hero:SetAbilityPoints(0)
+
+end
+
+-- WHat happens when a new round starts
+-- Not currently in use
+function CustomGameMode:OnNewRound( key )
+	
+	--For all heros?
+	local hero = EntIndexToHScript(keys.heroindex)
+	local player = EntIndexToHScript(keys.player)
+
+	hero:SetGold(RandomInt(1,15), false)
+	ModifyLumber(player, RandomInt(0,5))
 
 end
 
