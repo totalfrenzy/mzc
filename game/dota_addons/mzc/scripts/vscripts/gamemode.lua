@@ -6,6 +6,7 @@ function CustomGameMode:InitGameMode()
 	-- Get Rid of Shop button - Change the UI Layout if you want a shop button
 	GameRules:GetGameModeEntity():SetHUDVisible(6, false)
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1300)
+	GameRules:SetGoldPerTick(0)
 
 	-- DebugPrint
 	Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
@@ -94,8 +95,8 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	--end
 
 	-- Give Initial Resources
-	hero:SetGold(5000, false)
-	ModifyLumber(player, 5000)
+	hero:SetGold(10, false)
+	ModifyLumber(player, 10)
 
 	GameMode:SetFogOfWarDisabled(true) 
 
