@@ -83,7 +83,7 @@ function CustomGameMode:OnPlayerPickHero(keys)
 		--local rotate_pos = position + Vector(1,0,0) * 100
 		--local builder_pos = RotatePosition(position, QAngle(0, angle*i, 0), rotate_pos)
 --
-		--local builder = CreateUnitByName("peasant", builder_pos, true, hero, hero, hero:GetTeamNumber())
+		--local builder = CreateUnitByName("peasant", builder_pos, true, hero, hero, DOTA_TEAM_BADGUYS)
 		--builder:SetOwner(hero)
 		--builder:SetControllableByPlayer(playerID, true)
 		--table.insert(player.units, builder)
@@ -97,8 +97,13 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	--hero:SetGold(5000, false)
 	--ModifyLumber(player, 5000)
 
-	hero:SetGold(RandomInt(1,15), false)
-	ModifyLumber(player, RandomInt(0,5))
+	i = (RandomInt(1,15)
+
+	hero:SetGold(i, false)
+
+	i = (RandomInt(0,5)
+
+	ModifyLumber(player, i)
 
 
 	GameMode:SetFogOfWarDisabled(true) 
@@ -130,8 +135,13 @@ function CustomGameMode:OnNewRound( key )
 	local hero = EntIndexToHScript(keys.heroindex)
 	local player = EntIndexToHScript(keys.player)
 
-	hero:SetGold(RandomInt(1,15), false)
-	ModifyLumber(player, RandomInt(0,5))
+	i = (RandomInt(1,15)
+
+	hero:SetGold(i, false)
+
+	i = (RandomInt(0,5)
+
+	ModifyLumber(player, i)
 
 end
 

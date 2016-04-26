@@ -294,7 +294,7 @@
 	
 		"UnitName"						"tower"
 		"AbilityCooldown"				"0"
-		"AbilityGoldCost"				"50"
+		"AbilityGoldCost"				"1"
 		// End of BuildingHelper info
 	
 		"AbilitySpecial"
@@ -307,7 +307,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"gold_cost"				"50"
+				"gold_cost"				"1"
 			}
 			"03"
 			{
