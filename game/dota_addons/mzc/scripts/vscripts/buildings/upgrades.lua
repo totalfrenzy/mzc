@@ -129,6 +129,6 @@ end
 function SetLevel0( event )
 	local ability = event.ability
 	if ability:GetLevel() == 1 then
-		ability:SetLevel(0)	
+		ability:SetLevel(1)	
 	end
 end

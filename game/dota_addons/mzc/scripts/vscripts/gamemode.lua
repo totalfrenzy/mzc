@@ -41,7 +41,7 @@ function CustomGameMode:InitGameMode()
 end
 
 -- A player picked a hero
-function CustomGameMode:OnPlayerPickHero(keys)
+function CustomGameMode:OnPlayerPickHero(keys) --keys
 
 	local hero = EntIndexToHScript(keys.heroindex)
 	local player = EntIndexToHScript(keys.player)
@@ -71,8 +71,8 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	--player.buildings[city_center_name] = 1
 	--table.insert(player.structures, building)
 
-	--CheckAbilityRequirements( hero, player )
-	--CheckAbilityRequirements( building, player )
+	CheckAbilityRequirements( hero, player )
+	CheckAbilityRequirements( building, player )
 
 	-- Add the hero to the player units list
 	table.insert(player.units, hero)

@@ -187,13 +187,13 @@
 	"Scale"							"0" //bool
 	"PlayerCanControl"				"1" //bool
 
-	"BuilderInside"					"1"
-	"ConsumesBuilder"				"1"
+	"BuilderInside"					"0"
+	"ConsumesBuilder"				"0"
 	"ModelRotation"					"90"
 
 	"UnitName"						"dragon_tower"
 	"AbilityCooldown"				"0"
-	"AbilityGoldCost"				"322"
+	"AbilityGoldCost"				"0"
 	// End of BuildingHelper info
 
 	"AbilitySpecial"
@@ -201,17 +201,17 @@
 		"01"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"build_time"			"15.0"
+			"build_time"			"5.0"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"gold_cost"				"322"
+			"gold_cost"				"0"
 		}
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lumber_cost"			"100"
+			"lumber_cost"			"1"
 		}
 	}
 

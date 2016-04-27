@@ -4,11 +4,11 @@
 
 	"UnitLabel"					"builder"
 
-	"AbilityLayout"				"1"
+	"AbilityLayout"				"2"
 	//"Ability1" 					"repair"
 	"Ability1" 					"build_tower"
 		
-		"Ability2" 					""
+		"Ability2" 					"build_dragon_tower"
 		"Ability3" 					""
 		"Ability4" 					""
 		"Ability5"					""
