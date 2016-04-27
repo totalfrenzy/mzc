@@ -7,6 +7,8 @@ function CustomGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetHUDVisible(6, false)
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride(1300)
 	GameRules:SetGoldPerTick(0)
+	GameRules:SetStartingGold(5)
+
 
 	-- DebugPrint
 	Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
@@ -50,7 +52,7 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	player.structures = {} -- This keeps the handle of the constructed units, to iterate for unlocking upgrades
 	player.buildings = {} -- This keeps the name and quantity of each building
 	player.upgrades = {} -- This kees the name of all the upgrades researched
-	player.lumber = 0 -- Secondary resource of the player
+	player.lumber = 10 -- Secondary resource of the player
 
     -- Create city center in front of the hero
     --local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 300
@@ -95,10 +97,13 @@ function CustomGameMode:OnPlayerPickHero(keys)
 	--end
 
 	-- Give Initial Resources
+	
+
 	hero:SetGold(10, false)
 	ModifyLumber(player, 10)
 
 	GameMode:SetFogOfWarDisabled(true) 
+
 
 	-- Lumber tick
 	Timers:CreateTimer(1, function()
