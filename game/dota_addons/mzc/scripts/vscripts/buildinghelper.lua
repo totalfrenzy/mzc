@@ -338,6 +338,18 @@ function BuildingHelper:PlaceBuilding(player, name, location, blockGridNav, size
 
     building.state = "complete"
 
+    --maybe here
+    for i=0,15 do
+            local abil = builder:GetAbilityByIndex(i)
+            if abil then
+                local name = abil:GetAbilityName()
+                if name ~= abilName and StringStartsWith(name, "move_to_point_") then
+                    builder:RemoveAbility(name)
+                    DebugPrint('[John] Just removed the following ability in placebuilding: ' .. name)
+                end
+            end
+        end
+
     -- Return the created building
     return building
 end
@@ -762,6 +774,17 @@ function BuildingHelper:StartBuilding( keys )
 
     -- Remove the model particle
     ParticleManager:DestroyParticle(work.particleIndex, true)
+    for i=0,15 do
+            local abil = builder:GetAbilityByIndex(i)
+            if abil then
+                local name = abil:GetAbilityName()
+                if name ~= abilName and StringStartsWith(name, "move_to_point_") then
+                    builder:RemoveAbility(name)
+                    DebugPrint('[John] Just removed the following ability: ' .. name)
+                end
+            end
+        end
+
 end
 
 --[[
@@ -984,7 +1007,9 @@ end
       AdvanceQueue
       * Processes an item of the builders work queue
 ]]--
+
 function BuildingHelper:AdvanceQueue(builder)
+    
     if builder.buildingQueue and #builder.buildingQueue > 0 then
         BuildingHelper:PrintQueue(builder)
 
@@ -1011,15 +1036,21 @@ function BuildingHelper:AdvanceQueue(builder)
                 local name = abil:GetAbilityName()
                 if name ~= abilName and StringStartsWith(name, "move_to_point_") then
                     builder:RemoveAbility(name)
+                    DebugPrint('[John] Just removed the following ability: ' .. name)
                 end
             end
         end
 
         if not builder:HasAbility(abilName) then
             builder:AddAbility(abilName)
+            DebugPrint('[John] this happened')
+            --DebugPrint('[John] Just added the following ability 1: ' .. abilName())
         end
         local abil = builder:FindAbilityByName(abilName)
         abil:SetLevel(1)
+         DebugPrint('[John] Just added the following ability 2: ' .. abil:GetAbilityName())
+         
+         
 
         Timers:CreateTimer(function()
             builder:CastAbilityOnPosition(location, abil, 0)
@@ -1036,6 +1067,8 @@ function BuildingHelper:AdvanceQueue(builder)
         builder.state = "idle"
         builder.work = nil
     end
+
+
 end
 
 --[[
